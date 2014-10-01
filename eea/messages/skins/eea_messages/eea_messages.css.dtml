@@ -1,4 +1,4 @@
-.eea-messages-holder {
+#eea-messages-holder {
   width: 100%;
   position: fixed;
   top: 0;
