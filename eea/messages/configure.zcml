@@ -1,15 +1,17 @@
 <configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:i18n="http://namespaces.zope.org/i18n"
-    i18n_domain="eea">
+        xmlns="http://namespaces.zope.org/zope"
+        xmlns:i18n="http://namespaces.zope.org/i18n"
+        xmlns:cmf="http://namespaces.zope.org/cmf"
+        i18n_domain="eea">
 
-  <includeDependencies package="."/>
+    <includeDependencies package="."/>
+    <cmf:registerDirectory name="skins" directory="skins" recursive="True" />
 
-  <include file="profiles.zcml" />
-  <include file="permissions.zcml" />
+    <include file="profiles.zcml" />
+    <include file="permissions.zcml" />
 
-  <include package=".browser" />
-  <include package=".controlpanel" />
-  <include package=".upgrades" />
+    <include package=".browser" />
+    <include package=".controlpanel" />
+    <include package=".upgrades" />
 
 </configure>

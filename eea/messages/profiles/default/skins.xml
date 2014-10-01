@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object name="portal_skins">
+    <object name="eea_messages" meta_type="Filesystem Directory View"
+            directory="eea.messages:skins/eea_messages" />
+
+    <skin-path name="*">
+        <layer name="eea_messages"
+               insert-after="custom"/>
+    </skin-path>
+
+</object>
