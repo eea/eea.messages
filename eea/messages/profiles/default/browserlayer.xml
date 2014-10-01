@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<layers>
+  <layer name="eea.messages.layer"
+    interface="eea.messages.interfaces.ILayer" />
+</layers>
