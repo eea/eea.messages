@@ -6,4 +6,23 @@
   z-index: 9999;
   margin: 0 auto; }
 
+.portalMessage {
+  position: relative; }
+
+.knob {
+  font: bold 18px Arial !important;
+  height: 20px !important;
+  margin-top: 5px !important;
+  margin-left: -25px !important;
+  position: absolute;
+  top: 0;
+  right: 5px; }
+
+canvas {
+  background: white;
+  border-radius: 30px;
+  position: absolute;
+  top: 0;
+  right: 0; }
+
 /*# sourceMappingURL=eea_messages.css.dtml.map */
