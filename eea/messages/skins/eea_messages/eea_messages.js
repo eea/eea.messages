@@ -110,6 +110,13 @@ EEAMessages.Message.prototype = {
             }
         };
         var intervalID = window.setInterval(animateKnob, 1000);
+        $knob.hover(function(){
+           $knob.val('X');
+        });
+        $knob.click(function() {
+            self.context.fadeOut(self.settings.fadeTime);
+            window.clearInterval(intervalID);
+        });
         self.context.hover(function(){
              window.clearInterval(intervalID);
         }, function() {
@@ -136,6 +143,7 @@ jQuery.fn.EEAMessages.options = {
     wrapWith: "<div id='eea-messages-holder'/>",
     id: '#eea-messages-holder',
     timeout: 15000,
+    ActionTimeout: 30000,
     fadeTime: 500
 };
 

@@ -1,28 +1,29 @@
 #eea-messages-holder {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  margin: 0 auto; }
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    margin: 0 auto; }
 
 .portalMessage {
-  position: relative; }
+    position: relative; }
 
 .knob {
-  font: bold 18px Arial !important;
-  height: 20px !important;
-  margin-top: 5px !important;
-  margin-left: -25px !important;
-  position: absolute;
-  top: 0;
-  right: 5px; }
+    font: bold 18px Arial !important;
+    height: 20px !important;
+    margin-top: 5px !important;
+    margin-left: -25px !important;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 5px; }
 
 canvas {
-  background: white;
-  border-radius: 30px;
-  position: absolute;
-  top: 0;
-  right: 0; }
+    background: white;
+    border-radius: 30px;
+    position: absolute;
+    top: 0;
+    right: 0; }
 
 /*# sourceMappingURL=eea_messages.css.dtml.map */
