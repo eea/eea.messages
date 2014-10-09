@@ -13,10 +13,6 @@ EEAMessages.Message = function(context, options){
 
     self.settings = $.extend( {}, $.fn.EEAMessages.options, options );
 
-    if(options){
-        jQuery.extend(self.settings, options);
-    }
-
     self.initialize();
 };
 
@@ -84,9 +80,18 @@ EEAMessages.Message.prototype = {
 
     handle_message_render: function(data) {
         var self = data;
-        var $knob = $("<input class='knob'/>").appendTo(self.context);
+        var timeout_count = self.settings.isActionMenu ?
+            self.settings.timeoutAction.toString() :
+            self.settings.timeout.toString();
+        var count =  window.parseInt(timeout_count.substring(0,2));
+        var two_thirds = Math.round(count * 0.66);
+        var two_thirds_color = self.settings.mediumThreshold;
+        var one_third = Math.round(count * 0.33);
+        var one_third_color = self.settings.lowThreshold;
+
+        var $knob = $("<input />", {'class': 'knob', value: count}).appendTo(self.context);
         $knob.knob({
-            'value': 0,
+            'value': count,
             'readOnly': true,
             'width': 30,
             'height': 30,
@@ -94,21 +99,18 @@ EEAMessages.Message.prototype = {
             'dynamicDraw': true,
             'thickness': 0.1,
             'tickColorizeValues': true,
-            'skin': 'tron'
+            'inputColor': self.settings.highThreshold,
+            'inline': false
         });
-        var $parent = $knob.closest('div');
-        // jquery.knob surrounds the input with a div which has display inline
-        // as inline style
-        if($parent.css('display') === "inline") {
-            $parent.css('display', 'block');
-        }
-        var timeout_count = self.settings.isActionMenu ?
-                            self.settings.timeoutAction.toString() :
-                            self.settings.timeout.toString();
-        var count =  window.parseInt(timeout_count.substring(0,2));
         var animateKnob = function() {
-            $knob.val(count).trigger('change');
             count -= 1;
+            $knob.val(count).trigger('change');
+            if (count < two_thirds) {
+                $knob.css('color', two_thirds_color);
+            }
+            if (count < one_third) {
+                $knob.css('color', one_third_color);
+            }
             if (count <= 0) {
                window.clearInterval(intervalID);
                 self.context.fadeOut(self.settings.fadeTime);
@@ -150,7 +152,10 @@ jQuery.fn.EEAMessages.options = {
     timeout: 15000,
     timeoutAction: 30000,
     fadeTime: 500,
-    isActionMenu: false
+    isActionMenu: false,
+    lowThreshold: 'red',
+    mediumThreshold: 'orange',
+    highThreshold: 'green'
 };
 
 // Call it
