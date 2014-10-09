@@ -95,17 +95,18 @@ EEAMessages.Message.prototype = {
             'tickColorizeValues': true,
             'skin': 'tron'
         });
-        var count = 15;
+        var $parent = $knob.closest('div');
+        if($parent.css('display') === "inline") {
+            $parent.css('display', 'block');
+        }
+
+        var count = window.parseInt(self.settings.timeout.toString().substring(0,2));
         var animateKnob = function() {
             $knob.val(count).trigger('change');
-            var $parent = $knob.closest('div');
-            if($parent.css('display') === "inline") {
-                $parent.css('display', 'block');
-            }
             count -= 1;
             if (count <= 0) {
                window.clearInterval(intervalID);
-                self.context.fadeOut();
+                self.context.fadeOut(self.settings.fadeTime);
             }
         };
         var intervalID = window.setInterval(animateKnob, 1000);
@@ -134,7 +135,8 @@ jQuery.fn.EEAMessages = function(options){
 jQuery.fn.EEAMessages.options = {
     wrapWith: "<div id='eea-messages-holder'/>",
     id: '#eea-messages-holder',
-    timeout: 15000
+    timeout: 15000,
+    fadeTime: 500
 };
 
 // Call it
