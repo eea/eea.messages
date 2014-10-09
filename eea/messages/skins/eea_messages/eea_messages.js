@@ -91,14 +91,12 @@ EEAMessages.Message.prototype = {
 
         var $knob = $("<input />", {'class': 'knob', value: count}).appendTo(self.context);
         $knob.knob({
-            'value': count,
+            'min': 0,
+            'max': count,
             'readOnly': true,
             'width': 30,
             'height': 30,
-            'background': 'white',
-            'dynamicDraw': true,
             'thickness': 0.1,
-            'tickColorizeValues': true,
             'inputColor': self.settings.highThreshold,
             'inline': false
         });
