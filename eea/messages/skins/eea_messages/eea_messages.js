@@ -74,8 +74,9 @@ EEAMessages.Message.prototype = {
     handle_message_added: function(data) {
         var self = data;
         var $elem = self.context;
-        var linkFound = $elem.find('a');
+        var linkFound = $elem.find('a').length;
         if (linkFound) {
+            self.settings.isActionMenu = true;
             $elem.trigger('EEAMessages.ActionMessage', self);
         }
         $elem.trigger('EEAMessages.render', self);
@@ -85,7 +86,7 @@ EEAMessages.Message.prototype = {
         var self = data;
         var $knob = $("<input class='knob'/>").appendTo(self.context);
         $knob.knob({
-            value: 0,
+            'value': 0,
             'readOnly': true,
             'width': 30,
             'height': 30,
@@ -96,11 +97,15 @@ EEAMessages.Message.prototype = {
             'skin': 'tron'
         });
         var $parent = $knob.closest('div');
+        // jquery.knob surrounds the input with a div which has display inline
+        // as inline style
         if($parent.css('display') === "inline") {
             $parent.css('display', 'block');
         }
-
-        var count = window.parseInt(self.settings.timeout.toString().substring(0,2));
+        var timeout_count = self.settings.isActionMenu ?
+                            self.settings.timeoutAction.toString() :
+                            self.settings.timeout.toString();
+        var count =  window.parseInt(timeout_count.substring(0,2));
         var animateKnob = function() {
             $knob.val(count).trigger('change');
             count -= 1;
@@ -143,8 +148,9 @@ jQuery.fn.EEAMessages.options = {
     wrapWith: "<div id='eea-messages-holder'/>",
     id: '#eea-messages-holder',
     timeout: 15000,
-    ActionTimeout: 30000,
-    fadeTime: 500
+    timeoutAction: 30000,
+    fadeTime: 500,
+    isActionMenu: false
 };
 
 // Call it
