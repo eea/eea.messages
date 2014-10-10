@@ -1,3 +1,4 @@
+/* global window */
 //// Top namespace
 if (!window.EEA) {
     window.EEA = {};
@@ -147,6 +148,9 @@ jQuery.fn.EEAMessages = function(options){
     });
 };
 
+// You can modify this object in order to get different defaults in case
+// they are needed within eea.messages.init.js
+// calling $(context).EEAMessages({id: 'someid'}) will override these defaults
 jQuery.fn.EEAMessages.options = {
     wrapWith: "<div id='eea-messages-holder'/>",
     id: '#eea-messages-holder',
