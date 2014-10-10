@@ -1,10 +1,12 @@
 """ Browser views
 """
-from Products.Five.browser import BrowserView
 import json
+
+from Products.Five.browser import BrowserView
 from plone.registry.interfaces import IRegistry
-from zope.component import queryAdapter, getUtility
-from zope.component.hooks import getSite
+from zope.component import getUtility
+from eea.cache import cache
+
 from eea.messages.controlpanel.interfaces import ISettings
 
 
@@ -21,20 +23,8 @@ def jsonify(obj, response=None, status=None):
 class SettingsJSONView(BrowserView):
     """ Custom view controller
     """
-    def __init__(self, context, request):
-        super(SettingsJSONView, self).__init__(context, request)
-        self._settings = None
-
-    @property
-    def settings(self):
-        """ Settings
-        """
-        if self._settings is None:
-            site = getSite()
-            self._settings = queryAdapter(site, ISettings)
-        return self._settings
-
-    def __call__(self):
+    @cache(get_key=lambda method, self: method.__name__)
+    def messages_settings(self):
         registry = getUtility(IRegistry)
         records = registry.records
         reg_name = ISettings.__identifier__
@@ -43,3 +33,6 @@ class SettingsJSONView(BrowserView):
         for value in values:
             output[value.fieldName] = value.value
         return jsonify(output, self.request.response)
+
+    def __call__(self):
+        return self.messages_settings()

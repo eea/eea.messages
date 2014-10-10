@@ -36,7 +36,9 @@ setup(name=NAME,
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'eea.icons'
+          'eea.icons',
+          'eea.jquery',
+          'eea.cache'
           # -*- Extra requirements: -*-
       ],
       entry_points="""
