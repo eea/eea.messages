@@ -24,7 +24,7 @@ class ISettings(Interface):
         required=True,
         default=15000
     )
-    action_timeout = schema.Int(
+    timeout_action = schema.Int(
         title=_(u"Action Timeout"),
         description=_(u"Default time for messages with links in miliseconds "
                       u"before the message dissapears"),

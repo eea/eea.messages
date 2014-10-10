@@ -81,7 +81,7 @@ EEAMessages.Message.prototype = {
     handle_message_render: function(data) {
         var self = data;
         var timeout_count = self.settings.isActionMenu ?
-            self.settings.timeoutAction.toString() :
+            self.settings.timeout_action.toString() :
             self.settings.timeout.toString();
         var count =  window.parseInt(timeout_count.substring(0,2));
         var two_thirds = Math.round(count * 0.66);
@@ -152,7 +152,7 @@ jQuery.fn.EEAMessages.options = {
     wrapWith: "<div id='eea-messages-holder'/>",
     id: '#eea-messages-holder',
     timeout: 15000,
-    timeoutAction: 30000,
+    timeout_action: 30000,
     fadeTime: 500,
     isActionMenu: false,
     lowThreshold: 'red',
