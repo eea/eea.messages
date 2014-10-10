@@ -10,8 +10,7 @@ if (!window.EEA.EEAMessages) {
 EEAMessages.Message = function(context, options){
     var self = this;
     self.context = context;
-
-    self.settings = $.extend( {}, $.fn.EEAMessages.options, options );
+    self.settings = $.extend({}, $.fn.EEAMessages.options, options);
 
     self.initialize();
 };
