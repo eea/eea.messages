@@ -16,7 +16,6 @@
             for="*"
             layer="eea.messages.interfaces.ILayer"
             name="eea.messages.settings"
-            template="zpt/view.pt"
             class=".settings.SettingsJSONView"
             permission="zope2.View"
             />

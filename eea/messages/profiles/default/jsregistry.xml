@@ -6,7 +6,7 @@
                 cookable="False"
                 enabled="True"
                 expression=""
-                id="eea_messages.js"
+                id="eea.messages.js"
                 inline="False" />
 
     <javascript cacheable="True"
@@ -14,7 +14,7 @@
                 cookable="False"
                 enabled="True"
                 expression=""
-                id="eea_messages.init.js"
+                id="eea.messages.init.js"
                 insert-after="eea_messages.js"
                 inline="False" />
 </object>
