@@ -3,14 +3,6 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="eea">
 
-  <browser:page
-    for="*"
-    layer="eea.messages.interfaces.ILayer"
-    name="eea.messages.view"
-    template="zpt/view.pt"
-    class=".app.view.SettingsJSONView"
-    permission="zope2.View"
-    />
 
   <browser:resource
     name="eea.messages.view.css"
