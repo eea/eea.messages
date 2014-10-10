@@ -90,6 +90,7 @@ EEAMessages.Message.prototype = {
         var one_third_color = self.settings.lowThreshold;
 
         var $knob = $("<input />", {'class': 'knob', value: count}).appendTo(self.context);
+        var message_hidden = false;
         $knob.knob({
             'min': 0,
             'max': count,
@@ -120,12 +121,15 @@ EEAMessages.Message.prototype = {
         });
         $knob.click(function() {
             self.context.fadeOut(self.settings.fadeTime);
+            message_hidden = true;
             window.clearInterval(intervalID);
         });
         self.context.hover(function(){
              window.clearInterval(intervalID);
         }, function() {
-            intervalID = window.setInterval(animateKnob, 1000);
+            if (!message_hidden) {
+                intervalID = window.setInterval(animateKnob, 1000);
+            }
         });
     },
 
