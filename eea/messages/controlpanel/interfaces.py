@@ -12,14 +12,22 @@ class ISettings(Interface):
     """ Alchemy settings
 
         >>> from eea.messages.interfaces import ISettings
-        >>> ISettings(portal).token = u'123'
-        >>> ISettings(portal).token
-        u'123'
+        >>> ISettings(portal).timeout = 123
+        >>> ISettings(portal).timeout
+        123
 
     """
-    token = schema.TextLine(
-        title=_(u"Token"),
-        description=_(u"Provide token"),
+    timeout = schema.Int(
+        title=_(u"Timeout"),
+        description=_(u"Default time in miliseconds before the message "
+                      u"dissapears"),
         required=True,
-        default=u""
+        default=15000
+    )
+    action_timeout = schema.Int(
+        title=_(u"Action Timeout"),
+        description=_(u"Default time for messages with links in miliseconds "
+                      u"before the message dissapears"),
+        required=True,
+        default=30000
     )

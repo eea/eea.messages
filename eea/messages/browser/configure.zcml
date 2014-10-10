@@ -8,7 +8,7 @@
     layer="eea.messages.interfaces.ILayer"
     name="eea.messages.view"
     template="zpt/view.pt"
-    class=".app.view.View"
+    class=".app.view.SettingsJSONView"
     permission="zope2.View"
     />
 

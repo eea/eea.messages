@@ -36,14 +36,14 @@ class ControlPanelAdapter(SchemaAdapterBase):
         return self._settings
 
     @property
-    def token(self):
-        """ Get token
+    def timeout(self):
+        """ Get timeout
         """
-        name = u"token"
+        name = u"timeout"
         return getattr(self.settings, name, ISettings[name].default)
 
-    @token.setter
-    def token(self, value):
-        """ Set token
+    @timeout.setter
+    def timeout(self, value):
+        """ Set timeout
         """
-        self.settings.token = value
+        self.settings.timeout = value
