@@ -2,7 +2,8 @@
 """
 from Products.Five.browser import BrowserView
 import json
-from zope.component import queryAdapter
+from plone.registry.interfaces import IRegistry
+from zope.component import queryAdapter, getUtility
 from zope.component.hooks import getSite
 from eea.messages.controlpanel.interfaces import ISettings
 
@@ -34,4 +35,11 @@ class SettingsJSONView(BrowserView):
         return self._settings
 
     def __call__(self):
-        return jsonify(self.settings, self.request.response)
+        registry = getUtility(IRegistry)
+        records = registry.records
+        reg_name = ISettings.__identifier__
+        values = records.values(reg_name + ".", reg_name + "0")
+        output = {}
+        for value in values:
+            output[value.fieldName] = value.value
+        return jsonify(output, self.request.response)
