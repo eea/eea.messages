@@ -47,3 +47,16 @@ class ControlPanelAdapter(SchemaAdapterBase):
         """ Set timeout
         """
         self.settings.timeout = value
+
+    @property
+    def action_timeout(self):
+        """ Get Action Messages timeout
+        """
+        name = u"action_timeout"
+        return getattr(self.settings, name, ISettings[name].default)
+
+    @action_timeout.setter
+    def actiont_imeout(self, value):
+        """ Set Action Messages timeout
+        """
+        self.settings.action_timeout = value
