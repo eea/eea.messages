@@ -64,7 +64,7 @@ EEAMessages.Message.prototype = {
     // event handlers
     handle_message_add: function(data) {
         var self = data;
-        self.context.appendTo(self.settings.holder);
+        self.context.hide().appendTo(self.settings.holder);
     },
 
     handle_message_added: function(data) {
@@ -88,6 +88,7 @@ EEAMessages.Message.prototype = {
         var two_thirds_color = self.settings.mediumThreshold;
         var one_third = Math.round(count * 0.33);
         var one_third_color = self.settings.lowThreshold;
+        self.context.slideDown(self.settings.animationTime);
 
         var $knob = $("<input />", {'class': 'knob', value: count}).appendTo(self.context);
         var message_hidden = false;
@@ -112,7 +113,7 @@ EEAMessages.Message.prototype = {
             }
             if (count <= 0) {
                 window.clearInterval(intervalID);
-                self.context.fadeOut(self.settings.fadeTime);
+                self.context.slideUp(self.settings.animationTime);
             }
         };
         var intervalID = window.setInterval(animateKnob, 1000);
@@ -120,7 +121,7 @@ EEAMessages.Message.prototype = {
             $knob.val('X');
         });
         $knob.click(function() {
-            self.context.fadeOut(self.settings.fadeTime);
+            self.context.slideUp(self.settings.animationtime);
             message_hidden = true;
             window.clearInterval(intervalID);
         });
@@ -159,7 +160,7 @@ jQuery.fn.EEAMessages.options = {
     id: '#eea-messages-holder',
     timeout: 15000,
     timeout_action: 30000,
-    fadeTime: 500,
+    animationTime: 400,
     isActionMenu: false,
     lowThreshold: 'red',
     mediumThreshold: 'orange',
