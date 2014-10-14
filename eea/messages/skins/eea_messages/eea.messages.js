@@ -136,7 +136,7 @@ EEAMessages.Message.prototype = {
 
     handle_message_hide: function(data) {
         var self = data || this;
-        self.context.fadeOut();
+        self.context.slideDown();
     }
 };
 
