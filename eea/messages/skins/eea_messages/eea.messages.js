@@ -8,7 +8,7 @@ if (!window.EEA.EEAMessages) {
 }
 
 // Constructor
-EEAMessages.Message = function(context, options){
+EEAMessages.Message = function(context, options) {
     var self = this;
     self.context = context;
     self.settings = $.extend({}, $.fn.EEAMessages.options, options);
@@ -18,9 +18,9 @@ EEAMessages.Message = function(context, options){
 
 // Prototype
 EEAMessages.Message.prototype = {
-    constructor:  EEAMessages.Message,
+    constructor: EEAMessages.Message,
     _build: function() {
-        var $holder  = $(this.settings.id);
+        var $holder = $(this.settings.id);
         if (!$holder.length) {
             this.settings.holder = $(this.settings.wrapWith).appendTo('body');
         }
@@ -31,19 +31,19 @@ EEAMessages.Message.prototype = {
     _bindEvents: function() {
         // Bind some events
         var self = this;
-        self.context.bind('EEAMessages.add', function(evt, data){
+        self.context.bind('EEAMessages.add', function(evt, data) {
             self.handle_message_add(data);
             self.context.trigger('EEAMessages.added', self);
         });
-        self.context.bind('EEAMessages.added', function(evt, data){
+        self.context.bind('EEAMessages.added', function(evt, data) {
             self.handle_message_added(data);
         });
-        self.context.bind('EEAMessages.hide', function(evt, data){
+        self.context.bind('EEAMessages.hide', function(evt, data) {
             self.handle_message_hide(data);
             self.context.trigger('EEAMessages.hidden', self);
         });
 
-        self.context.bind('EEAMessages.render', function(evt, data){
+        self.context.bind('EEAMessages.render', function(evt, data) {
             self.handle_message_render(data);
             self.context.trigger('EEAMessages.rendered', self);
         });
@@ -51,7 +51,7 @@ EEAMessages.Message.prototype = {
     _subscribeEvents: function() {
 
     },
-    initialize: function(){
+    initialize: function() {
         var self = this;
         self._build();
         self._bindEvents();
@@ -62,7 +62,7 @@ EEAMessages.Message.prototype = {
     },
 
     // event handlers
-    handle_message_add: function(data){
+    handle_message_add: function(data) {
         var self = data;
         self.context.appendTo(self.settings.holder);
     },
@@ -83,7 +83,7 @@ EEAMessages.Message.prototype = {
         var timeout_count = self.settings.isActionMenu ?
             self.settings.timeout_action.toString() :
             self.settings.timeout.toString();
-        var count =  window.parseInt(timeout_count.substring(0,2));
+        var count = window.parseInt(timeout_count.substring(0, 2));
         var two_thirds = Math.round(count * 0.66);
         var two_thirds_color = self.settings.mediumThreshold;
         var one_third = Math.round(count * 0.33);
@@ -111,21 +111,21 @@ EEAMessages.Message.prototype = {
                 $knob.css('color', one_third_color);
             }
             if (count <= 0) {
-               window.clearInterval(intervalID);
+                window.clearInterval(intervalID);
                 self.context.fadeOut(self.settings.fadeTime);
             }
         };
         var intervalID = window.setInterval(animateKnob, 1000);
-        $knob.hover(function(){
-           $knob.val('X');
+        $knob.hover(function() {
+            $knob.val('X');
         });
         $knob.click(function() {
             self.context.fadeOut(self.settings.fadeTime);
             message_hidden = true;
             window.clearInterval(intervalID);
         });
-        self.context.hover(function(){
-             window.clearInterval(intervalID);
+        self.context.hover(function() {
+            window.clearInterval(intervalID);
         }, function() {
             if (!message_hidden) {
                 intervalID = window.setInterval(animateKnob, 1000);
@@ -133,16 +133,19 @@ EEAMessages.Message.prototype = {
         });
     },
 
-    handle_message_hide: function(data){
+    handle_message_hide: function(data) {
         var self = data || this;
         self.context.fadeOut();
     }
 };
 
 // jQuery plugin
-jQuery.fn.EEAMessages = function(options){
-    return this.each(function(){
+jQuery.fn.EEAMessages = function(options) {
+    return this.each(function() {
         var context = jQuery(this);
+        if ($.data(this, 'EEAMessages.Message')) {
+            return;
+        }
         var message = new EEAMessages.Message(context, options);
         $.data(this, 'EEAMessages.Message', message);
     });
