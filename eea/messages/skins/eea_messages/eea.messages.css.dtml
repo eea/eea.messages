@@ -7,12 +7,13 @@
   margin: 0 auto; }
 
 .portalMessage {
+  margin: 0 !important;
   position: relative; }
   .portalMessage canvas {
     background: white;
     border-radius: 30px;
     position: absolute;
-    top: -10px;
+    top: 0;
     right: 0; }
 
 .knob {
@@ -21,7 +22,7 @@
   margin-top: 5px !important;
   margin-left: -25px !important;
   position: absolute;
-  top: -10px;
+  top: 0;
   right: 5px; }
 
-/*# sourceMappingURL=eea_messages.css.dtml.map */
+/*# sourceMappingURL=eea.messages.css.dtml.map */
