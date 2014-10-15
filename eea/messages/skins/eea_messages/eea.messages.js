@@ -119,6 +119,8 @@ EEAMessages.Message.prototype = {
         var intervalID = window.setInterval(animateKnob, 1000);
         $knob.hover(function() {
             $knob.val('X');
+        }, function(){
+            $knob.val(count);
         });
         $knob.click(function() {
             self.context.slideUp(self.settings.animationTime);
