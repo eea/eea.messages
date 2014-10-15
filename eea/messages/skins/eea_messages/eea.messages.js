@@ -88,7 +88,7 @@ EEAMessages.Message.prototype = {
         var two_thirds_color = self.settings.mediumThreshold;
         var one_third = Math.round(count * 0.33);
         var one_third_color = self.settings.lowThreshold;
-        self.context.slideDown(self.settings.animationTime);
+        self.context.delay(500).slideDown(self.settings.animationTime);
 
         var $knob = $("<input />", {'class': 'knob', value: count}).appendTo(self.context);
         var message_hidden = false;
@@ -121,7 +121,7 @@ EEAMessages.Message.prototype = {
             $knob.val('X');
         });
         $knob.click(function() {
-            self.context.slideUp(self.settings.animationtime);
+            self.context.slideUp(self.settings.animationTime);
             message_hidden = true;
             window.clearInterval(intervalID);
         });
