@@ -12,7 +12,7 @@ top of things.
 
 * Make sure you have a [GitHub account](https://github.com/signup/free)
 * If you need to submit a ticket do it under EEA Organisation area (https://github.com/eea)
-  under the respective package, e.g. https://github.com/eea/eea.messagest/issues
+  under the respective package, e.g. https://github.com/eea/eea.messages/issues
 * Submit a ticket for your issue, assuming one does not already exist.
   * Check that issue/feature is not already reported under EEA official issues
     register for Zope/Plone at http://taskman.eionet.europa.eu/projects/zope
