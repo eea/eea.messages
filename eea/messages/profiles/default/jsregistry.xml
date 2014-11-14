@@ -15,6 +15,6 @@
                 enabled="True"
                 expression=""
                 id="eea.messages.init.js"
-                insert-after="eea_messages.js"
+                insert-after="eea.messages.js"
                 inline="False" />
 </object>
