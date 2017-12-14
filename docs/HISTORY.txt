@@ -3,8 +3,6 @@ Changelog
 
 1.3.dev0 - (unreleased)
 -----------------------
-* Change: Replace eeacms/zptlint with eeacms/plone-test:4 zptlint
-  [avoinea refs #90415]
 
 1.2 - (2017-04-24)
 ------------------
@@ -15,7 +13,7 @@ Changelog
 ------------------
 * Change: Switched to curl in the jenkins build install script
   [olimpiurob refs #22402]
-* Change: Changed fetch url for jenkins build install script to the install
+* Change: Changed fetch url for jenkins build install script to the install 
   script from the main EEA CPB repository
   [olimpiurob refs #22402]
 
