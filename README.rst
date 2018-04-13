@@ -1,10 +1,12 @@
 ============
 EEA Messages
 ============
-.. image:: http://ci.eionet.europa.eu/job/eea.messages-www/badge/icon
-  :target: http://ci.eionet.europa.eu/job/eea.messages-www/lastBuild
-.. image:: http://ci.eionet.europa.eu/job/eea.messages-plone4/badge/icon
-  :target: http://ci.eionet.europa.eu/job/eea.messages-plone4/lastBuild
+.. image:: https://ci.eionet.europa.eu/buildStatus/icon?job=eea/eea.messages/develop
+  :target: https://ci.eionet.europa.eu/job/eea/job/eea.messages/job/develop/display/redirect
+  :alt: develop
+.. image:: https://ci.eionet.europa.eu/buildStatus/icon?job=eea/eea.messages/master
+  :target: https://ci.eionet.europa.eu/job/eea/job/eea.messages/job/master/display/redirect
+  :alt: master
 
 EEA Messages
 
